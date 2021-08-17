@@ -1,0 +1,17 @@
+<%= link_to("<< Back to List", quizzes_path, :class => 'back-link') %>
+
+<div class="quizzes delete">
+  <h2>Delete Quiz</h2>
+
+  <%= form_for(@quiz, :method => 'delete') do |f| %>
+
+    <p>Are you sure you want to permanently delete this quiz?</p>
+
+    <p class="reference-name"><%= f.object.id %></p>
+
+    <div class="form-buttons">
+      <%= f.submit("Delete Quiz") %>
+    </div>
+
+  <% end %>
+</div>

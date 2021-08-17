@@ -1,0 +1,16 @@
+<%if defined?(@owner) && @owner == "subject"%>
+	<%=link_to("<< Back to List", subject_path(@page.subject), :class => 'back-link')%>
+<%else%>
+	<%=link_to("<< Back to List", pages_path, :class => 'back-link')%>
+<%end%>
+
+<div class="pages edit">
+  <h2>Update Topics</h2>
+
+  <%=form_for(@page) do |f|%>
+    <%=render :partial => 'form', :locals => {:f => f}%>
+    <div class="form-buttons">
+      <%=f.submit("Update Page")%>
+    </div>
+  <%end%>
+</div>

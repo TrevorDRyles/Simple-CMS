@@ -1,0 +1,43 @@
+<%@title = @page.name%>
+<%if defined?(@owner) && @owner == "subject"%>
+  <%=link_to("<< Back to List", subject_path(@page.subject), :class => 'back-link')%>
+<%else%>
+  <%=link_to("<< Back to List", pages_path, :class => 'back-link')%>
+<%end%>
+<h2>Show Topic</h2>
+<div class="pages index">
+  <table class="half center listing" summary="Page list">
+    <tr class="header">
+      <th>Name</th>  
+      <th>Description</th>    
+      <th>Attribute</th>
+      <th>Image</th>
+      <%if defined?(actions) && actions%>
+        <th>Actions</th>
+      <%end%>
+    </tr>
+    <%=render "/pages/page", :page => @page, :actions => false%>
+  </table>  
+  <h2>
+    Found in Subject:
+  </h2>
+  <h3>
+    <%=link_to(("#{@subject.subject}"), (subject_path(@subject)))%>
+  </h3>
+</div>
+<style>
+.imgo{
+  height: 200px;
+  width: 200px;
+}
+.half{
+  width: 50% !important;
+}
+h3{
+  margin-left: 550px;
+}
+/*.half > td{
+  width: 70%;
+  height: 30%;
+}*/
+</style>

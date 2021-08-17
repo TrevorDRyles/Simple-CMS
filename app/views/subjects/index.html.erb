@@ -1,0 +1,60 @@
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+<%@page_title = "All Subjects"%>
+<div class="subjects index">
+  <h2>Subjects</h2>
+  <%=link_to("Add New Subject", "", :id => "modalSubj", :class => 'action new')%>
+  <br>
+  <%=link_to "Home", access_menu_path%>
+  <table class="listing" summary="Subject list">
+    <tr class="header">
+      <th>Subject</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+    <%@subjects.each do |subject|%>
+      <tr>
+        <td><%=subject.subject%></td>
+        <td><%=subject.category%></td>
+        <td><%=subject.description%></td>
+        <td class="actions">
+          <%=link_to("Show", subject_path(subject), :class => 'action show')%>
+          <%=link_to("Edit", edit_subject_path(subject), :class => 'action edit')%>
+          <%=link_to("Delete", "#", :class => 'action delete', :id => subject.id)%>
+        </td>
+      </tr>
+    <%end%>
+  </table>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#modalSubj").on("click", function(e) {
+      e.preventDefault();
+      $.get("<%=new_modal_subjects_path%>", function(data) {
+        $("#modal-window").find(".modal-content").html(data);
+        $("#modal-window").modal();
+      });   
+    });
+  });
+  $(".delete").on("click", function(e){
+    var id = $(this).attr("id");
+    var result = confirm("Are you sure you want to permanently delete this subject?");
+    if(result){
+      document.location.href = "subjects/delete/" + id;
+    }
+  });
+</script>
+<style>
+.img{
+  position: center;
+  margin-left: 430px;
+  width: 50%;
+  padding: 10px;
+  height: 230px;
+  width: 300px;
+}
+</style>

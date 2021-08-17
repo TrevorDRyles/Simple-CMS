@@ -1,0 +1,54 @@
+<%@title = @subject.subject%>
+<%=link_to("<< Back to List", subjects_path, :class => 'back-link')%><br>
+<%=link_to 'Add Page', "", {:class => 'action new', :id => "modalPage"}%>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div class="subjects index">
+  <h2>Show Subject</h2>
+  <table class="listing" summary="Subject detail view">
+    <tr class="header">
+      <th>Subject</th>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><%=@subject.subject%></td>
+      <td><%=@subject.category%></td>
+      <td><%=@subject.description%></td>
+    </tr>
+  </table>
+</div>
+<h2>Pages: </h2>
+  <h3>
+    <div class="subjects index">
+      <%=render "/pages/pages", :pages => @pages, :actions => true%>
+    </div>
+  </h3>
+
+<style>
+.imgo{
+  height: 200px;
+  width: 200px;
+}
+.half{
+  width: 100px !important;
+  height: 30%;
+}
+</style>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#modalPage").on("click", function(e) {
+    e.preventDefault();
+    var id = <%=@subject.id%>
+    $.get("<%=new_modal_pages_path%>" + "?owner_id=" + id, function(data) {
+      $("#modal-window").find(".modal-content").html(data);
+      $("#modal-window").modal();
+    });   
+  });
+});
+</script>

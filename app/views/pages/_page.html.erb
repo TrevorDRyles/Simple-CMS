@@ -1,0 +1,22 @@
+<div class='half'>
+  <td><%=page.name%></td>
+  <td><%=page.description%></td>
+</div>
+<td class="center"><%=status_tag(page.item_attribute)%><%=@subject.attribute_text%></td>
+<td class="imgo">
+  <%if page.image.exists?%>
+    <%=image_upload(page)%>
+  <%else%>
+    <img src ="<%=page.pic_url%>" class="imgo" alt=""></img>
+  <%end%>
+</td>
+<%if defined?(actions) && actions%>
+  <td class="actions">
+    <%=link_to("Show", 
+      page_path(page, :owner => "subject"),
+      :class => 'action show'
+      )%>
+    <%=link_to("Edit", edit_page_path(page, :owner => "subject"), :class => 'action edit')%>
+    <%=link_to("Delete", delete_page_path(page), :class => 'action delete')%>
+  </td>
+<%end%>

@@ -1,0 +1,12 @@
+<%= link_to("<< Back to List", quizzes_path, :class => 'back-link') %>
+
+<div class="quizzes edit">
+  <h2>Update Quiz</h2>
+
+  <%= form_for(@quiz) do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    <div class="form-buttons">
+      <%= f.submit("Update Quiz") %>
+    </div>
+  <% end %>
+</div>

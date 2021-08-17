@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%=@hide ? "" : "Simple CMS"%><%=(!@hide && @page_title) ? " | #{@page_title}" : ""%>
+    </title>
+    <%=stylesheet_link_tag('admin', :media => 'all', 'data-turbolinks-track' => true)%>
+    <%=javascript_include_tag('application', 'data-turbolinks-track' => true)%>  
+    <%=csrf_meta_tags%>
+  </head>
+  <body>
+    <div id="header">
+      <h1 class="h1">
+        <%if @subject.present?%>
+          <%=(@subject.subject)%>
+        <%else%>
+          <%=@hide ? "Login" : "Simple CMS"%>
+        <%end%>
+        <%if !@hide_logout.present?%>
+          <span class="mr-2" style="float:right;">
+            <%=link_to("Logout", access_logout_path, :style => "color:white")%>
+          </span>  
+        <%end%>
+      </h1>
+    </div>
+    <div id="main">
+      <%if !flash[:notice].blank?%>
+        <div class="notice">
+          <%=flash[:notice]%>
+        </div>
+      <%end%>    
+      <div id="content">
+        <%=yield%>
+      </div>
+    </div>
+  </body>
+</html>
+<style type="text/css">
+.h1{
+  font-size: 2.0rem;
+}
+.center {
+    margin: auto !important;
+}
+</style>

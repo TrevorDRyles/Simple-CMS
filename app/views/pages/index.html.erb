@@ -1,0 +1,27 @@
+<%@page_title = "All Topics"%>
+<div class="pages index">
+	<h2>Pages</h2>
+	<%=link_to "Home", access_menu_path%>
+	<table class="listing" summary="Page list">
+		<tr class="header">
+			<th>Topic</th>      
+			<th>Description</th>      
+			<th>Attribute</th>
+			<th>Actions</th>      
+		</tr>
+		<%@pages.each do |page|%>
+			<tr>
+				<td><%=page.name%></td>
+				<td><%=page.description%></td>
+				<td class="center">
+					<%=status_tag(page.item_attribute)%><%=page.subject.attribute_text%>
+					</td>
+				<td class="actions">
+					<%=link_to("Show", page_path(page, :owner => "page"), :class => 'action show')%>
+					<%=link_to("Edit", edit_page_path(page, :owner => 'page'), :class => 'action edit')%>
+					<%=link_to("Delete", delete_page_path(page), :class => 'action delete')%>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

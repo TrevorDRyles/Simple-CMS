@@ -1,0 +1,31 @@
+<%=error_messages_for(f.object)%>
+<%=hidden_field_tag :owner, @owner%>
+<div class="col-lg-12 mt-2">
+  <%=f.label :name%><br>
+  <%=f.text_field(:name)%>
+</div>
+<div class="col-lg-12 mt-2">
+  <%=f.label :description%><br>
+  <%=f.text_field(:description)%>
+</div>
+<%if @subject.present?%>
+<div class="col-lg-12 mt-2">
+  <%=f.label :subject%><br>
+  <%=f.text_field :subject_id, :value => @subject.subject, :readonly => true%>
+  <%=f.hidden_field :subject_id, :value => @subject.id%>    
+  <%#= f.select(:subject_id, @subjects.map {|s| [s.subject, s.id]}) %>
+</div>
+<%end%>
+<div class="col-lg-12 mt-2">
+  <%=f.label :item_attribute, "#{@subject.attribute_text}?"%>
+  <%=f.check_box(:item_attribute)%>
+</div>
+<div class="col-lg-12 mt-2">
+  <%=f.label :pic_url, "Image URL"%><br>
+  <%=f.text_field(:pic_url)%> 
+</div>
+Or
+<div class="col-lg-12">
+  <%=f.label :image%><br>
+  <%=f.file_field :image%>
+</div>

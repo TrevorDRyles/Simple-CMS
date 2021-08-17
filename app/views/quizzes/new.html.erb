@@ -1,0 +1,31 @@
+<%= link_to("<< Back to List", quizzes_path, :class => 'back-link') %>
+
+<div class="subjects new">
+  <h2>Create Quiz</h2>
+
+  <%= form_for @quiz do |f| %>
+
+    <table summary="Quiz form fields">
+    	<%= render :partial => 'form', :locals => {:f => f} %>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Create Quiz") %>
+    </div>
+
+  <% end %>
+
+
+<style type="text/css">
+/*table{
+ border-collapse: separate;
+ border-spacing: 20px 5px;
+}*/
+.center {
+  margin: auto;
+}
+#title {
+  border: 3px solid green;
+  padding: 10px;
+}
+</style>

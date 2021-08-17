@@ -1,0 +1,59 @@
+<%= link_to("<< Back to List", quizzes_path, :class => 'back-link') %>
+<br>
+  <h2>Show Quiz</h2>
+  <div class='container show'>
+    <div class='row'>
+      <div class='text col-sm-8'>
+        <div class='col-sm-12'>
+          Name:
+          <%=@quiz.name %>
+        </div>      
+        <div class='col-sm-12'>
+          Support Tickets Completed:
+          <%=@quiz.support_tickets %>
+        </div>
+        <div class='col-sm-12'>
+          Experience in Web Development:
+          <%=@quiz.experience%>
+        </div>  
+        <div class='col-sm-12'>
+          Software Engineering Languages:
+          <%if @quiz.languages.present?%>
+            <%@quiz.languages.each do |l|%>
+              <%="#{l}"%>
+            <%end%>
+          <%end%>
+        </div>   
+        <div class='col-sm-12'>
+          Response to CSS:
+          <%=@quiz.css_response%>
+        </div>
+      </div>
+      <div class='center-block'>
+        <b>
+          Software Engineering Meter: <%=@quiz.score_percent%>%
+          <div style="font-size:15px !important">
+            Ranking: <%=@quiz.score_text%>
+          </div>
+        </b>
+        <div class="ml10 center progress" style='width:500px'>
+          <div align='center' class="progress-bar progress-bar-striped progress-bar-animated" style="width:<%=@quiz.score_percent%>%">
+            <%=@quiz.score_percent%>%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+<style>
+.img{
+  height: 250px;
+}
+.text{
+    font-size: 25px;
+    color: maroon;
+}
+</style>

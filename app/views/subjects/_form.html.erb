@@ -1,0 +1,31 @@
+<%=error_messages_for(f.object)%>
+<div class="row">
+  <div class="col-md-12">
+    <%=f.label :subject%><br>
+    <%=f.text_field(:subject)%>
+  </div>
+  <div class="col-md-12">
+    <%=f.label :category%><br>
+    <%=f.text_field(:category)%>
+  </div>
+  <div class="col-md-12">
+    <%=f.label :description%><br>
+    <%=f.text_field(:description)%>
+  </div>
+<div class="col-lg-12 mt-2">
+  <%=f.label :attribute_text, "Identifying Attribute"%><br>
+  <%=f.text_field :attribute_text%>
+</div>
+</div>
+<!--   <tr>
+    <th>Position</th>
+    <td><%#= f.select(:position, 1..@subject_count ) %></td>
+  </tr>
+  <tr>
+    <th>Visible</th>
+    <td><%#= f.check_box(:visible) %></td>
+  </tr>
+  <tr>
+    <th>Created</th>
+    <td><%#= f.datetime_select(:created_at, :order => [:month, :day, :year]) %></td>
+  </tr> -->

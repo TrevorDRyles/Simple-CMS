@@ -1,0 +1,24 @@
+<%if defined?(page)%>
+  <%pages = [] << page%>
+<%end%>
+<%if defined?(pages) && pages.present?%>
+  <table class="center half listing" summary="Page list">
+    <tr class="header">
+      <th>Name</th>  
+      <th>Description</th>    
+      <th>Attribute</th>
+      <th>Image</th>
+      <%if defined?(actions) && actions%>
+        <th>Actions</th>
+      <%end%>
+    </tr>
+      <%pages.each do |p|%>
+      <tr>
+        <%=render "/pages/page", :page => p, :actions => actions%>
+      </tr>
+      <%end%>    
+    </tr>
+  </table>
+<%else%>
+  <div class="text-center">None</div>
+<%end%>

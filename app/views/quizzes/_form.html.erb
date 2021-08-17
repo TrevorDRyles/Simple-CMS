@@ -1,0 +1,84 @@
+<%=error_messages_for(f.object)%>
+<div class='row'>
+  <div class=col-lg-6>
+    <div class="col-lg-12">
+      <%=f.label :name%>
+      <%=f.text_field :name%>
+    </div>  
+    <div class="col-lg-12">
+    <%=f.label :support_tickets, "Support Tickets Completed"%>
+    	<%=f.select(
+    			:support_tickets, 
+    			options_for_select(
+            @support_tickets, 
+            f.object.support_tickets,
+          ),
+          :include_blank => true,
+        )%>
+    </div>
+<!-- <div class="col-lg-12">
+  <%#= f.label :image %>
+  <%#= f.file_field :image %>
+</div> -->
+<!-- <div class="row">
+  <%#@boyos.each do |name, attrs|%>
+    <div class="ml-5">
+      <img src="<%#=attrs[:img]%>" class='imgo' alt=''>
+      <div class="align-bottom">
+        <%#=f.label :boyo, name%>
+        <%#=f.radio_button :boyo, name%>
+      </div>
+    </div>
+  <%#end%>
+</div> -->
+    <div class='col-lg-12'>
+      <%=f.label :experience, 'Experience in Web Development'%>
+      <%=f.select :experience, options_for_select(@experience,
+      f.object.experience)%>
+    </div>
+
+  <div class='row'>
+    <div class='ml-3 col-lg-12'>
+      Software Engineering Languages:
+    </div>
+    <%@languages.each do |name, attrs|%>
+      <div col-xs-3>
+        <div class="ml-5">
+          <div class="align-bottom">
+            <%=f.label :languages, name%>
+            <%=f.check_box :languages, {:multiple => true}, name, false%>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+    <div class='col-lg-12'>
+      <%=f.label :css_response, 'How Do You Feel About this Statement?'%>
+      <h5>CSS is simple, intuitive, and enjoyable.</h5>
+      <%=f.select :css_response, options_for_select(@css_response, f.object.css_response),
+      :include_blank => true%>
+    </div>
+  </div>
+</div>
+<style>
+  .imgo{
+    height: 100px;
+    width: 100px;
+  } 
+  .rad{
+vertical-align:bottom;
+  }
+  .img{
+position: center;
+/*  margin-left: 430px;
+  margin-top:50px;*/
+  width: 50%;
+  padding: 10px;
+  height: 270px;
+  width: 300px;
+}
+</style>
+<script type="text/javascript">
+
+</script>
